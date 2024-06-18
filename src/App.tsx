@@ -1,7 +1,8 @@
 import React from 'react';
-import Home from './components/pages/home';
-import Login from './components/pages/login';
-import Register from './components/pages/register';
+import LandingPage from './components/Landingpage/landingpage';
+import Login from './components/Login/login';
+import Register from './components/Register/register';
+import Home from './components/Home/home';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
@@ -9,9 +10,10 @@ const App: React.FC = () => {
     return (
         <>
           <Routes>
-            <Route path="/home" element ={<Home />} />
+            <Route path="/landingpage" element ={<LandingPage />} />
             <Route path="/login" element ={<Login />} />
             <Route path="/register" element ={<Register />} />
+            <Route path="/home" element ={<Home />} />
           </Routes>  
         </>
     );
