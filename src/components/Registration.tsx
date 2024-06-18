@@ -9,7 +9,7 @@ const Registration: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/registration', { email, password });
+      const res = await axios.post('/register', { email, password });
       console.log(res.data); // Handle response (e.g., show success message)
     } catch (err: any) {
       if (err.response && err.response.status === 400) {

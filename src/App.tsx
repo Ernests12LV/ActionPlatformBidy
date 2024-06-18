@@ -1,16 +1,19 @@
 import React from 'react';
-import Login from './components/Login';
-import Registration from './components/Registration';
+import Home from './components/pages/home';
+import Login from './components/pages/login';
+import Register from './components/pages/register';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 
 const App: React.FC = () => {
     return (
-        <div className="App">
-            <h1>Login Page</h1>
-            <Login />
-            <h1>Register Page</h1>
-            <Registration />
-        </div>
+        <>
+          <Routes>
+            <Route path="/home" element ={<Home />} />
+            <Route path="/login" element ={<Login />} />
+            <Route path="/register" element ={<Register />} />
+          </Routes>  
+        </>
     );
 };
 
