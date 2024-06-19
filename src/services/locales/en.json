@@ -1,0 +1,30 @@
+{
+  "dashboard.title": "BiDy",
+  "dashboard.add": "Add",
+  "dashboard.edit": "Edit",
+  "dashboard.delete": "Delete",
+  "dashboard.addAuction": "Add New Auction",
+  "dashboard.editAuction": "Edit Auction",
+  "dashboard.cancel": "Cancel",
+  "dashboard.submit": "Submit",
+  "dashboard.auctionTitle": "Title",
+  "dashboard.auctionDescription": "Description",
+  "dashboard.startTime": "Start Time",
+  "dashboard.startingPrice": "Starting Price",
+  "dashboard.auctionStep": "Auction Step",
+  "dashboard.auctionCreatedSuccessfully": "Auction created successfully",
+  "dashboard.auctionUpdatedSuccessfully": "Auction updated successfully",
+  "dashboard.auctionDeletedSuccessfully": "Auction deleted successfully",
+  "dashboard.allFieldsRequired": "All fields are required",
+  "dashboard.failedToFetchAuctions": "Failed to fetch auctions",
+  "dashboard.failedToDeleteAuction": "Failed to delete auction",
+  "dashboard.invalidCredentials": "Invalid credentials",
+  "login.title": "Login",
+  "login.email": "Email Address",
+  "login.password": "Password",
+  "login.loginButton": "Login",
+  "login.registerLink": "Don't have an account? Register",
+  "alerts": {
+    "loginFailed": "Login Failed"
+  }
+}

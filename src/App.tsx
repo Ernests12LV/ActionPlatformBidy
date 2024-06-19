@@ -1,21 +1,20 @@
 import React from 'react';
-import LandingPage from './components/Landingpage/landingpage';
-import Login from './components/Login/login';
-import Register from './components/Register/register';
-import Home from './components/Home/home';
-import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomeView from './components/Home/Home';
+import RegisterView from './components/Register/Register';
+import LoginView from './components/Login/Login';
+import LandingPageView from './components/Landingpage/LandingPage';
+import DashBoard from './components/DashBoard/DashBoard';
 
 const App: React.FC = () => {
     return (
-        <>
-          <Routes>
-            <Route path="/landingpage" element ={<LandingPage />} />
-            <Route path="/login" element ={<Login />} />
-            <Route path="/register" element ={<Register />} />
-            <Route path="/home" element ={<Home />} />
-          </Routes>  
-        </>
+            <Routes>
+                <Route path="/" element={<LandingPageView />} />
+                <Route path="/home" element={<HomeView />} />
+                <Route path="/dashboard" element={<DashBoard />} />
+                <Route path="/register" element={<RegisterView />} />
+                <Route path="/login" element={<LoginView />} />
+            </Routes>
     );
 };
 

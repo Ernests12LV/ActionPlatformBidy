@@ -1,23 +1,14 @@
+import React from 'react';
+import { Container, CssBaseline, Box, Avatar, Typography, TextField, Button, Grid, IconButton, Alert } from "@mui/material";
 import { LockOutlined, ArrowBack } from "@mui/icons-material";
-import { Container, CssBaseline, Box, Avatar, Typography, TextField, Button, Grid, IconButton } from "@mui/material";
-import axios from '../../axiosInstance';
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import LoginController from './LoginController';
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+const LoginView: React.FC = () => {
+  const { handleSubmit, email, setEmail, password, setPassword, showErrorAlert, setErrorAlert } = LoginController();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("/login", { email, password });
-      console.log(res.data);
-      navigate("/home");
-    } catch (err: any) {
-      console.error(err.response ? err.response.data : "Error occurred:", err.message);
-    }
+  const handleCloseAlert = () => {
+    setErrorAlert(false); // Close the alert when user dismisses it
   };
 
   return (
@@ -25,7 +16,7 @@ const Login = () => {
       <Container maxWidth="xs">
         <CssBaseline />
         <Box sx={{ position: 'relative', mt: 2 }}>
-          <IconButton sx={{ position: 'absolute', top: 0, right: 0 }} onClick={() => navigate("/home")}>
+          <IconButton sx={{ position: 'absolute', top: 0, right: 0 }} component={Link} to="/">
             <ArrowBack />
           </IconButton>
         </Box>
@@ -68,8 +59,15 @@ const Login = () => {
           </Box>
         </Box>
       </Container>
+
+      {/* Alert component positioned in top-left corner */}
+      {showErrorAlert && (
+        <Alert severity="error" onClose={handleCloseAlert} sx={{ position: 'fixed', top: 0, left: 0, zIndex: 9999 }}>
+          Login Failed
+        </Alert>
+      )}
     </>
   );
 };
 
-export default Login;
+export default LoginView;

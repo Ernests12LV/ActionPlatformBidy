@@ -1,16 +1,9 @@
-import { LockOutlined } from "@mui/icons-material";
+import React from 'react';
+import { Container, CssBaseline, Box, Avatar, Typography, Button } from "@mui/material";
 import HomeIcon from '@mui/icons-material/Home';
-import {
-  Container,
-  CssBaseline,
-  Box,
-  Avatar,
-  Typography,
-  Button,
-} from "@mui/material";
 import { Link } from "react-router-dom";
 
-const LandingPage = () => {
+const LandingPageView: React.FC = () => {
   return (
     <>
       <Container maxWidth="xs">
@@ -33,7 +26,7 @@ const LandingPage = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               component={Link}
-              to="/login" // Specify the path to navigate to
+              to="/login"
             >
               Login
             </Button>
@@ -43,7 +36,7 @@ const LandingPage = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               component={Link}
-              to="/register" // Specify the path to navigate to
+              to="/register"
             >
               Register
             </Button>
@@ -54,4 +47,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default LandingPageView;

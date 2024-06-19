@@ -1,0 +1,31 @@
+{
+    "dashboard.title": "BiDy",
+    "dashboard.add": "Ajouter",
+    "dashboard.edit": "Modifier",
+    "dashboard.delete": "Effacer",
+    "dashboard.addAuction": "Ajouter une nouvelle enchère",
+    "dashboard.editAuction": "Modifier l'enchère",
+    "dashboard.cancel": "Annuler",
+    "dashboard.submit": "Soumettre",
+    "dashboard.auctionTitle": "Titre",
+    "dashboard.auctionDescription": "Description",
+    "dashboard.startTime": "Heure de début",
+    "dashboard.startingPrice": "Prix de départ",
+    "dashboard.auctionStep": "Étape d'enchère",
+    "dashboard.auctionCreatedSuccessfully": "Enchère créée avec succès",
+    "dashboard.auctionUpdatedSuccessfully": "Enchère mise à jour avec succès",
+    "dashboard.auctionDeletedSuccessfully": "Enchère supprimée avec succès",
+    "dashboard.allFieldsRequired": "Tous les champs sont obligatoires",
+    "dashboard.failedToFetchAuctions": "Échec de la récupération des enchères",
+    "dashboard.failedToDeleteAuction": "Échec de la suppression de l'enchère",
+    "dashboard.invalidCredentials": "Identifiants invalides",
+    "login.title": "Login",
+    "login.email": "Email Address",
+    "login.password": "Password",
+    "login.loginButton": "Login",
+    "login.registerLink": "Don't have an account? Register",
+    "alerts": {
+    "loginFailed": "Échec de la connexion"
+  }
+  }
+  

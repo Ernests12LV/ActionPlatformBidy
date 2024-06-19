@@ -1,0 +1,31 @@
+{
+    "dashboard.title": "BiDy",
+    "dashboard.add": "Pievienot",
+    "dashboard.edit": "Rediģēt",
+    "dashboard.delete": "Dzēst",
+    "dashboard.addAuction": "Pievienot jaunu izsoli",
+    "dashboard.editAuction": "Rediģēt izsoli",
+    "dashboard.cancel": "Atcelt",
+    "dashboard.submit": "Labi",
+    "dashboard.auctionTitle": "Nosaukums",
+    "dashboard.auctionDescription": "Apraksts",
+    "dashboard.startTime": "Sākuma laiks",
+    "dashboard.startingPrice": "Sākuma cena",
+    "dashboard.auctionStep": "Likmes solis",
+    "dashboard.auctionCreatedSuccessfully": "Izsole izveidota veiksmīgi",
+    "dashboard.auctionUpdatedSuccessfully": "Izsole rediģēta veiksmīgi",
+    "dashboard.auctionDeletedSuccessfully": "Izsole dzēsta veiksmīgi",
+    "dashboard.allFieldsRequired": "Visiem laukiem jābūt aizpildītiem",
+    "dashboard.failedToFetchAuctions": "Neizdevās iegūt izsoles",
+    "dashboard.failedToDeleteAuction": "Neizdevās dzēst izsoli",
+    "dashboard.invalidCredentials": "Nederīgi pieteikšanās dati",
+    "login.title": "Pieslēgties",
+    "login.email": "E-pasta adrese",
+    "login.password": "Parole",
+    "login.loginButton": "Pieslēgties",
+    "login.registerLink": "Vai jums nav konts? Rreģistrēties",
+    "alerts": {
+    "loginFailed": "Pieslēgties neizdevās"
+  }
+  }
+  
