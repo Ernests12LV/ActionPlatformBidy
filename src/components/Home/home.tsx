@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Container, CssBaseline, Box, Avatar, Typography, Button, List, ListItem, ListItemText, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions, TextField, IconButton } from "@mui/material";
+import { Container, CssBaseline, Box, Avatar, Typography, List, ListItem, ListItemText, CircularProgress, IconButton } from "@mui/material";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link } from 'react-router-dom';
-import axios from '../../axiosInstance';
+import { useTranslation } from 'react-i18next';
 import IAuction from '../../interfaces/IAuctionData';
 import HomeController from './HomeController';
-import e from 'express';
 import { ArrowBack } from '@mui/icons-material';
 
 const HomeView: React.FC = () => {
+    const { t } = useTranslation(); // Initialize useTranslation hook
+
     const [auctions, setAuctions] = useState<IAuction[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -23,7 +24,7 @@ const HomeView: React.FC = () => {
                 const data = await fetchAuctions();
                 setAuctions(data);
             } catch (err: any) {
-                setError('Failed to fetch auctions');
+                setError(t('home.failedToFetchAuctions')); // Translate error message
                 console.error(err);
             } finally {
                 setLoading(false);
@@ -31,7 +32,7 @@ const HomeView: React.FC = () => {
         };
 
         loadAuctions();
-    }, [fetchAuctions]);
+    }, [fetchAuctions, t]);
 
     return (
         <>
@@ -53,7 +54,7 @@ const HomeView: React.FC = () => {
                     <Avatar sx={{ m: 1, bgcolor: "primary.light" }}>
                         <DashboardIcon />
                     </Avatar>
-                    <Typography variant="h5">BiDy</Typography>
+                    <Typography variant="h5">{t('home.title')}</Typography> {/* Translate 'BiDy' */}
                 </Box>
                 <Box sx={{
                     display: "flex",
@@ -73,7 +74,7 @@ const HomeView: React.FC = () => {
                             <ListItem key={auction._id}>
                                 <ListItemText
                                     primary={`${auction.title}: ${auction._id}`}
-                                    secondary={`Description: ${auction.description}, Start Time: ${auction.startTime}, Starting Price: ${auction.startingPrice}, Auction Step: ${auction.auctionStep}`}
+                                    secondary={`${t('home.description')}: ${auction.description}, ${t('home.startTime')}: ${auction.startTime}, ${t('home.startingPrice')}: ${auction.startingPrice}, ${t('home.auctionStep')}: ${auction.auctionStep}`}
                                 />
                             </ListItem>
                         ))}

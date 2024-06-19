@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Container, CssBaseline, Box, Avatar, Typography, Button, List, ListItem, ListItemText, CircularProgress, Dialog, DialogTitle, DialogContent, DialogActions, TextField, IconButton } from "@mui/material";
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import DashBoardController from './DashBoardController';
-import IAuction from '../../interfaces/IAuctionData';
 import { ArrowBack } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import DashBoardController from './DashBoardController';
+import IAuction from '../../interfaces/IAuctionData';
 
 const DashBoard: React.FC = () => {
+    const { t } = useTranslation(); // Initialize useTranslation hook
+
     const [auctions, setAuctions] = useState<IAuction[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -14,6 +17,7 @@ const DashBoard: React.FC = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [currentId, setCurrentId] = useState<string | null>(null);
 
+    // Fetch and other functions from controller
     const {
         fetchAuctions,
         handleSubmit,
@@ -26,13 +30,14 @@ const DashBoard: React.FC = () => {
         auctionStep, setAuctionStep
     } = DashBoardController();
 
+    // UseEffect to load auctions
     useEffect(() => {
         const loadAuctions = async () => {
             try {
                 const data = await fetchAuctions();
                 setAuctions(data);
             } catch (err: any) {
-                setError('Failed to fetch auctions');
+                setError(t('dashboard.failedToFetchAuctions')); // Translate error message
                 console.error(err);
             } finally {
                 setLoading(false);
@@ -40,9 +45,11 @@ const DashBoard: React.FC = () => {
         };
 
         loadAuctions();
-    }, [fetchAuctions]);
+    }, [fetchAuctions, t]);
 
+    // Handlers for opening and closing dialog
     const handleClickOpen = () => {
+        // Clear form fields and set default values
         setTitle("");
         setDescription("");
         setStartTime("");
@@ -57,6 +64,7 @@ const DashBoard: React.FC = () => {
         setOpen(false);
     };
 
+    // Handler for form submission
     const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setOpen(false);
@@ -72,13 +80,14 @@ const DashBoard: React.FC = () => {
             const updatedAuctions = await fetchAuctions();
             setAuctions(updatedAuctions);
         } catch (err: any) {
-            setError('Failed to fetch auctions');
+            setError(t('dashboard.failedToFetchAuctions')); // Translate error message
             console.error(err);
         } finally {
             setLoading(false);
         }
     };
 
+    // Handlers for editing and deleting auctions
     const handleEditClick = (auction: IAuction) => {
         setCurrentId(auction._id);
         setTitle(auction.title);
@@ -97,7 +106,7 @@ const DashBoard: React.FC = () => {
             const updatedAuctions = await fetchAuctions();
             setAuctions(updatedAuctions);
         } catch (err: any) {
-            setError('Failed to delete auction');
+            setError(t('dashboard.failedToDeleteAuction')); // Translate error message
             console.error(err);
         } finally {
             setLoading(false);
@@ -123,7 +132,7 @@ const DashBoard: React.FC = () => {
                 <Avatar sx={{ m: 1, bgcolor: "primary.light" }}>
                     <DashboardIcon />
                 </Avatar>
-                <Typography variant="h5">BiDy</Typography>
+                <Typography variant="h5">{t('dashboard.title')}</Typography> {/* Translate 'BiDy' */}
             </Box>
             <Box sx={{
                 display: "flex",
@@ -136,7 +145,7 @@ const DashBoard: React.FC = () => {
                     sx={{ mt: 3, mb: 2, mr: 2 }}
                     onClick={handleClickOpen}
                 >
-                    Add
+                    {t('dashboard.add')} {/* Translate 'Add' */}
                 </Button>
             </Box>
 
@@ -150,24 +159,24 @@ const DashBoard: React.FC = () => {
                         <ListItem key={auction._id}>
                             <ListItemText
                                 primary={`${auction.title}: ${auction._id}`}
-                                secondary={`Description: ${auction.description}, Start Time: ${auction.startTime}, Starting Price: ${auction.startingPrice}, Auction Step: ${auction.auctionStep}`}
+                                secondary={`${t('dashboard.auctionDescription')}: ${auction.description}, ${t('dashboard.startTime')}: ${auction.startTime}, ${t('dashboard.startingPrice')}: ${auction.startingPrice}, ${t('dashboard.auctionStep')}: ${auction.auctionStep}`}
                             />
-                            <Button onClick={() => handleEditClick(auction)}>Edit</Button>
-                            <Button onClick={() => handleDeleteClick(auction._id)}>Delete</Button>
+                            <Button onClick={() => handleEditClick(auction)}>{t('dashboard.edit')}</Button> {/* Translate 'Edit' */}
+                            <Button onClick={() => handleDeleteClick(auction._id)}>{t('dashboard.delete')}</Button> {/* Translate 'Delete' */}
                         </ListItem>
                     ))}
                 </List>
             )}
 
             <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>{isEditing ? 'Edit Auction' : 'Add New Auction'}</DialogTitle>
+                <DialogTitle>{isEditing ? t('dashboard.editAuction') : t('dashboard.addAuction')}</DialogTitle> {/* Translate dialog title */}
                 <form onSubmit={handleFormSubmit}>
                     <DialogContent>
                         <TextField
                             autoFocus
                             margin="dense"
                             id="title"
-                            label="Title"
+                            label={t('dashboard.auctionTitle')} /* Translate 'Title' */
                             type="text"
                             fullWidth
                             value={title}
@@ -176,7 +185,7 @@ const DashBoard: React.FC = () => {
                         <TextField
                             margin="dense"
                             id="description"
-                            label="Description"
+                            label={t('dashboard.auctionDescription')} /* Translate 'Description' */
                             type="text"
                             fullWidth
                             value={description}
@@ -185,7 +194,7 @@ const DashBoard: React.FC = () => {
                         <TextField
                             margin="dense"
                             id="startTime"
-                            label="Start Time"
+                            label={t('dashboard.startTime')} /* Translate 'Start Time' */
                             type="datetime-local"
                             fullWidth
                             value={startTime}
@@ -197,7 +206,7 @@ const DashBoard: React.FC = () => {
                         <TextField
                             margin="dense"
                             id="startingPrice"
-                            label="Starting Price"
+                            label={t('dashboard.startingPrice')} /* Translate 'Starting Price' */
                             type="number"
                             fullWidth
                             value={startingPrice}
@@ -206,7 +215,7 @@ const DashBoard: React.FC = () => {
                         <TextField
                             margin="dense"
                             id="auctionStep"
-                            label="Auction Step"
+                            label={t('dashboard.auctionStep')} /* Translate 'Auction Step' */
                             type="number"
                             fullWidth
                             value={auctionStep}
@@ -215,10 +224,10 @@ const DashBoard: React.FC = () => {
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose} color="primary">
-                            Cancel
+                            {t('dashboard.cancel')} {/* Translate 'Cancel' */}
                         </Button>
                         <Button type="submit" color="primary">
-                            {isEditing ? 'Update' : 'Add'}
+                            {isEditing ? t('dashboard.submit') : t('dashboard.add')} {/* Translate 'Submit' or 'Add' */}
                         </Button>
                     </DialogActions>
                 </form>

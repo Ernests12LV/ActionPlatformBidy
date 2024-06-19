@@ -1,10 +1,15 @@
+// LoginView.tsx
 import React from 'react';
 import { Container, CssBaseline, Box, Avatar, Typography, TextField, Button, Grid, IconButton, Alert } from "@mui/material";
 import { LockOutlined, ArrowBack } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { useTranslation } from 'react-i18next'; // Import useTranslation hook
+import i18n from '../../i18n';
 import LoginController from './LoginController';
 
 const LoginView: React.FC = () => {
+  const { t } = useTranslation(); // Initialize useTranslation hook
+
   const { handleSubmit, email, setEmail, password, setPassword, showErrorAlert, setErrorAlert } = LoginController();
 
   const handleCloseAlert = () => {
@@ -24,14 +29,14 @@ const LoginView: React.FC = () => {
           <Avatar sx={{ m: 1, bgcolor: "primary.light" }}>
             <LockOutlined />
           </Avatar>
-          <Typography variant="h5">Login</Typography>
+          <Typography variant="h5">{t('login.title')}</Typography> {/* Translate 'Login' */}
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label={t('login.email')} // Translate 'Email Address'
               name="email"
               autoFocus
               value={email}
@@ -43,17 +48,17 @@ const LoginView: React.FC = () => {
               fullWidth
               id="password"
               name="password"
-              label="Password"
+              label={t('login.password')} // Translate 'Password'
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-              Login
+              {t('login.loginButton')} {/* Translate 'Login' */}
             </Button>
             <Grid container justifyContent={"flex-end"}>
               <Grid item>
-                <Link to="/register">Don't have an account? Register</Link>
+                <Link to="/register">{t('login.registerLink')}</Link> {/* Translate 'Don't have an account? Register' */}
               </Grid>
             </Grid>
           </Box>
@@ -63,7 +68,7 @@ const LoginView: React.FC = () => {
       {/* Alert component positioned in top-left corner */}
       {showErrorAlert && (
         <Alert severity="error" onClose={handleCloseAlert} sx={{ position: 'fixed', top: 0, left: 0, zIndex: 9999 }}>
-          Login Failed
+          {t('alerts.loginFailed')} {/* Translate 'Login Failed' */}
         </Alert>
       )}
     </>

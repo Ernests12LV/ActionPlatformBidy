@@ -20,10 +20,28 @@
   "dashboard.failedToDeleteAuction": "Failed to delete auction",
   "dashboard.invalidCredentials": "Invalid credentials",
   "login.title": "Login",
-  "login.email": "Email Address",
+  "login.email": "E-mail Address",
   "login.password": "Password",
   "login.loginButton": "Login",
   "login.registerLink": "Don't have an account? Register",
+  "register.title": "Register",
+  "register.firstName": "First Name",
+  "register.lastName": "Last Name",
+  "register.email": "Email Address",
+  "register.password": "Password",
+  "register.registerButton": "Register",
+  "register.loginLink": "Already have an account? Login",
+  "landing.title": "BiDy",
+  "landing.loginButton": "Login",
+  "landing.registerButton": "Register",
+  "home": {
+    "title": "BiDy",
+    "description": "Description",
+    "startTime": "Start Time",
+    "startingPrice": "Starting Price",
+    "auctionStep": "Auction Step",
+    "failedToFetchAuctions": "Failed to fetch auctions"
+  },
   "alerts": {
     "loginFailed": "Login Failed"
   }
